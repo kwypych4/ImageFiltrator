@@ -1,7 +1,4 @@
-﻿using System.Drawing.Imaging;
-using System.Threading;
-
-namespace ImageFiltrator
+﻿namespace ImageFiltrator
 {
     class ImageProcessor
     {
