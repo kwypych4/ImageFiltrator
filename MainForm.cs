@@ -10,6 +10,7 @@ namespace ImageFiltrator
         private const string ImageFileFilter = "Image Files (*.jpg;*.jpeg;.*.png;)|*.jpg;*.jpeg;.*.png";
         private ImageProcessor imageProcessor = new();
         private DateTime startTime;
+        TimeSpan elapsed;
         private System.Windows.Forms.Timer? timer;
         private delegate Bitmap ApplyFilterDelegate(Bitmap originalImage, string filter);
         private bool isRunning = false;
@@ -62,7 +63,7 @@ namespace ImageFiltrator
         {
             if (timer != null)
             {
-                TimeSpan elapsed = DateTime.Now - startTime;
+                elapsed = DateTime.Now - startTime;
                 executionTimeLabel.Text = $"Czas wykonywania: {elapsed.Minutes:D2}:{elapsed.Seconds:D2}";
             }
 
@@ -303,6 +304,9 @@ namespace ImageFiltrator
             {
                 imageContainer.Image = image;
                 setControls(true);
+                string elapsedTimeText = $"{elapsed.Minutes:D2}:{elapsed.Seconds:D2}";
+                MessageBox.Show($"Filtrowanie zosta³o zakoñczone. Czas potrzebny do wykonania operacji to: {elapsedTimeText}", "Sukces", MessageBoxButtons.OK);
+
             }
         }
 
